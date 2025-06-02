@@ -19,12 +19,24 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const subject = formData.get('subject') as string;
+    const message = formData.get('message') as string;
+
+    // Create mailto link
+    const mailtoLink = `mailto:shresthkaysap19@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+
+    // Short delay before showing toast
+    await new Promise((resolve) => setTimeout(resolve, 500))
 
     toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
+      title: "Email client opened!",
+      description: "Please send the email from your email client to reach out to me.",
     })
 
     setIsSubmitting(false)
@@ -48,6 +60,7 @@ export function ContactForm() {
             <div className="space-y-2">
               <Input
                 placeholder="Your Name"
+                name="name"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
@@ -55,6 +68,7 @@ export function ContactForm() {
             <div className="space-y-2">
               <Input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -63,6 +77,7 @@ export function ContactForm() {
             <div className="space-y-2">
               <Input
                 placeholder="Subject"
+                name="subject"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
@@ -70,6 +85,7 @@ export function ContactForm() {
             <div className="space-y-2">
               <Textarea
                 placeholder="Your Message"
+                name="message"
                 rows={5}
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"

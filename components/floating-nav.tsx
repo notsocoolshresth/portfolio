@@ -87,12 +87,14 @@ export function FloatingNav() {
                 >
                   {item.name}
                 </Link>
-              ))}
-              <Button
+              ))}              <Button
                 size="sm"
                 className="ml-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+                asChild
               >
-                Resume
+                <a href="https://drive.google.com/file/d/1gs2ms2w8aSefmBkXpx0r51ujBKbiAjmb/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  Resume
+                </a>
               </Button>
             </div>
           )}
@@ -117,9 +119,10 @@ export function FloatingNav() {
               >
                 {item.name}
               </Link>
-            ))}
-            <Button className="mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0">
-              Resume
+            ))}            <Button className="mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0" asChild>
+              <a href="https://drive.google.com/file/d/1gs2ms2w8aSefmBkXpx0r51ujBKbiAjmb/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
             </Button>
           </div>
         </motion.div>

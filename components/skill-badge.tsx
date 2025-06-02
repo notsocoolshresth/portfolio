@@ -1,13 +1,23 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 interface SkillBadgeProps {
   name: string
-  level: number
+  level?: number
+  icon?: string
 }
 
-export function SkillBadge({ name, level }: SkillBadgeProps) {
+export function SkillBadge({ name, icon }: SkillBadgeProps) {
+  // Use a mapping for tech icons or a default placeholder
+  const getIconPath = () => {
+    if (icon) return icon;
+    // Convert name to lowercase and remove any special characters for file name matching
+    const formattedName = name.toLowerCase().replace(/[^\w]/g, '');
+    return `/tech-icons/${formattedName}.svg`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -19,20 +29,21 @@ export function SkillBadge({ name, level }: SkillBadgeProps) {
       <div className="relative overflow-hidden rounded-xl bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 p-6 h-full transition-all duration-300 hover:border-purple-500/50">
         <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
-        <div className="relative">
-          <div className="text-center mb-4 font-medium text-lg">{name}</div>
-
-          <div className="relative h-2.5 w-full bg-zinc-700 rounded-full overflow-hidden">
-            <motion.div
-              className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: `${level}%` }}
-              transition={{ duration: 1, delay: 0.2 }}
-              viewport={{ once: true }}
+        <div className="relative flex flex-col items-center">
+          <div className="w-12 h-12 mb-4 relative flex items-center justify-center">
+            <Image 
+              src={getIconPath()}
+              alt={`${name} logo`}
+              width={48}
+              height={48}
+              className="object-contain"
+              onError={(e) => {
+                // Fallback to a generic icon if the image fails to load
+                (e.target as HTMLImageElement).src = "/tech-icons/generic-code.svg";
+              }}
             />
           </div>
-
-          <div className="mt-2 text-right text-sm text-zinc-400">{level}%</div>
+          <div className="text-center font-medium text-lg">{name}</div>
         </div>
       </div>
     </motion.div>

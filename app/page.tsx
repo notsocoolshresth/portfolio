@@ -11,7 +11,6 @@ import { MouseFollower } from "@/components/mouse-follower"
 import { ScrollProgress } from "@/components/scroll-progress"
 import { SectionHeading } from "@/components/section-heading"
 import { GlassmorphicCard } from "@/components/glassmorphic-card"
-import { EducationCard } from "@/components/education-card"
 import { AchievementCard } from "@/components/achievement-card"
 
 export default function Portfolio() {
@@ -185,70 +184,17 @@ export default function Portfolio() {
                     <div className="text-sm text-zinc-500">CGPA</div>
                     <div className="font-medium text-green-500">8.69/10.0</div>
                   </div>
-                </div>
-
-                <div className="mt-8">
-                  <Button className="bg-zinc-800 hover:bg-zinc-700 text-white">Download Resume</Button>
+                </div>                <div className="mt-8">
+                  <Button className="bg-zinc-800 hover:bg-zinc-700 text-white" asChild>
+                    <a href="https://drive.google.com/file/d/1gs2ms2w8aSefmBkXpx0r51ujBKbiAjmb/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                      Download Resume
+                    </a>
+                  </Button>
                 </div>
               </GlassmorphicCard>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="py-32 relative">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <SectionHeading title="Education" subtitle="Academic background" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-            <EducationCard
-              institution="Indian Institute of Technology, Patna"
-              degree="B.Tech. in Artificial Intelligence and Data Science"
-              duration="2023 - Present"
-              grade="8.69/10.0"
-              gradeType="CGPA"
-            />
-            <EducationCard
-              institution="CBSE Board"
-              degree="Senior Secondary"
-              duration="2023"
-              grade="92.0%"
-              gradeType="Percentage"
-            />
-            <EducationCard
-              institution="CBSE Board"
-              degree="Secondary"
-              duration="2021"
-              grade="92.8%"
-              gradeType="Percentage"
-            />
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-center mb-8">Relevant Coursework</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "Algorithms",
-                "Artificial Intelligence",
-                "Discrete Mathematics",
-                "Data Analytics & Visualization",
-                "Database & Warehousing",
-                "Soft Skills",
-              ].map((course) => (
-                <div key={course} className="px-4 py-2 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-sm">
-                  {course}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        </div>      </section>
 
       {/* Skills Section */}
       <section id="skills" className="py-32 relative">
@@ -264,37 +210,37 @@ export default function Portfolio() {
             <div>
               <h3 className="text-xl font-semibold mb-6 text-center">Programming Languages</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
-                <SkillBadge name="Python" level={95} />
-                <SkillBadge name="JavaScript" level={90} />
-                <SkillBadge name="C++" level={85} />
-                <SkillBadge name="C" level={80} />
-                <SkillBadge name="Java" level={75} />
-                <SkillBadge name="HTML/CSS" level={90} />
-                <SkillBadge name="Bash" level={70} />
+                <SkillBadge name="Python" />
+                <SkillBadge name="JavaScript" />
+                <SkillBadge name="C++" />
+                <SkillBadge name="C" />
+                <SkillBadge name="Java" />
+                <SkillBadge name="HTML/CSS" />
+                <SkillBadge name="Bash" />
               </div>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-6 text-center">Frameworks & Libraries</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <SkillBadge name="React.js" level={90} />
-                <SkillBadge name="Node.js" level={85} />
-                <SkillBadge name="Express" level={80} />
-                <SkillBadge name="TensorFlow" level={85} />
-                <SkillBadge name="PyTorch" level={80} />
-                <SkillBadge name="Next.js" level={75} />
+                <SkillBadge name="React.js" />
+                <SkillBadge name="Node.js" />
+                <SkillBadge name="Express" />
+                <SkillBadge name="TensorFlow" />
+                <SkillBadge name="PyTorch" />
+                <SkillBadge name="Next.js" />
               </div>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-6 text-center">Tools & Technologies</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <SkillBadge name="SQL" level={85} />
-                <SkillBadge name="Git" level={90} />
-                <SkillBadge name="MongoDB" level={80} />
-                <SkillBadge name="RESTful APIs" level={85} />
-                <SkillBadge name="JWT" level={75} />
-                <SkillBadge name="Tailwind CSS" level={90} />
+                <SkillBadge name="SQL" />
+                <SkillBadge name="Git" />
+                <SkillBadge name="MongoDB" />
+                <SkillBadge name="RESTful APIs" />
+                <SkillBadge name="JWT" />
+                <SkillBadge name="Tailwind CSS" />
               </div>
             </div>
           </div>
@@ -311,29 +257,26 @@ export default function Portfolio() {
         <div className="container relative z-10">
           <SectionHeading title="Featured Projects" subtitle="Some of my recent work" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-            <ProjectCard
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">            <ProjectCard
               title="Site Builder"
               description="A full-stack web application enabling non-technical users to design websites without coding. Features drag-and-drop functionality, real-time preview, and JWT authentication."
               tags={["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "DND-kit"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
+              image="/site_builder.png"
+              demoUrl="https://it-project-2025.vercel.app/"
               repoUrl="https://github.com/notsocoolshresth"
-            />
-            <ProjectCard
+            />            <ProjectCard
               title="CNN Chess Bot"
               description="An intelligent chess bot using CNN + MiniMax architecture. Features dual TensorFlow CNN models for move prediction and an interactive GUI with heatmap overlays."
               tags={["Python", "TensorFlow", "Neural Networks", "Pygame", "python-chess", "AI"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
+              image="/chess.png"
+              demoUrl="#"
               repoUrl="https://github.com/notsocoolshresth"
-            />
-            <ProjectCard
+            />            <ProjectCard
               title="Railway Booking System"
               description="A comprehensive railway database management system with intelligent ticket management, seat allocation, RAC handling, and real-time availability tracking."
               tags={["React.js", "MySQL", "Flask", "Python", "Database Design", "REST API"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
+              image="/railway_project.png"
+              demoUrl="#"
               repoUrl="https://github.com/notsocoolshresth"
             />
           </div>

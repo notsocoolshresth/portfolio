@@ -64,16 +64,18 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
                   Code
                 </Link>
               </Button>
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
-                asChild
-              >
-                <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                  <ArrowUpRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              {demoUrl && demoUrl !== "#" && (
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+                  asChild
+                >
+                  <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
+                    Live Demo
+                    <ArrowUpRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
 
