@@ -2,9 +2,10 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Send } from "lucide-react"
+import { useForm, ValidationError } from '@formspree/react'
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,35 +14,32 @@ import { useToast } from "@/hooks/use-toast"
 
 export function ContactForm() {
   const { toast } = useToast()
+  const [state, handleSubmit] = useForm("mnnvqlnv")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [hasSucceeded, setHasSucceeded] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const subject = formData.get('subject') as string;
-    const message = formData.get('message') as string;
-
-    // Create mailto link
-    const mailtoLink = `mailto:shresthkaysap19@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+  // Use useEffect to handle state changes
+  useEffect(() => {
+    // Update local isSubmitting state based on Formspree state
+    if (state.submitting !== isSubmitting) {
+      setIsSubmitting(state.submitting)
+    }
     
-    // Open the email client
-    window.location.href = mailtoLink;
-
-    // Short delay before showing toast
-    await new Promise((resolve) => setTimeout(resolve, 500))
-
-    toast({
-      title: "Email client opened!",
-      description: "Please send the email from your email client to reach out to me.",
-    })
-
-    setIsSubmitting(false)
-    e.currentTarget.reset()
-  }
+    // Show success message when the form is successfully submitted
+    if (state.succeeded && !hasSucceeded) {
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      })
+      setHasSucceeded(true)
+      
+      // Reset form fields
+      const formElement = document.querySelector('form[action="https://formspree.io/f/mnnvqlnv"]') as HTMLFormElement;
+      if (formElement) {
+        formElement.reset();
+      }
+    }
+  }, [state.submitting, state.succeeded, isSubmitting, hasSucceeded, toast])
 
   return (
     <motion.div
@@ -56,13 +54,24 @@ export function ContactForm() {
         <div className="relative">
           <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form 
+            onSubmit={handleSubmit} 
+            className="space-y-6"
+            action="https://formspree.io/f/mnnvqlnv"
+            method="POST"
+          >
             <div className="space-y-2">
               <Input
                 placeholder="Your Name"
                 name="name"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
+              />
+              <ValidationError 
+                prefix="Name" 
+                field="name"
+                errors={state.errors}
+                className="text-sm text-red-500"
               />
             </div>
             <div className="space-y-2">
@@ -73,6 +82,12 @@ export function ContactForm() {
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
+              <ValidationError 
+                prefix="Email" 
+                field="email"
+                errors={state.errors}
+                className="text-sm text-red-500"
+              />
             </div>
             <div className="space-y-2">
               <Input
@@ -80,6 +95,12 @@ export function ContactForm() {
                 name="subject"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
+              />
+              <ValidationError 
+                prefix="Subject" 
+                field="subject"
+                errors={state.errors}
+                className="text-sm text-red-500"
               />
             </div>
             <div className="space-y-2">
@@ -90,13 +111,19 @@ export function ContactForm() {
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
+              <ValidationError 
+                prefix="Message" 
+                field="message"
+                errors={state.errors}
+                className="text-sm text-red-500"
+              />
             </div>
             <Button
               type="submit"
               className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
-              disabled={isSubmitting}
+              disabled={state.submitting}
             >
-              {isSubmitting ? (
+              {state.submitting ? (
                 <>Sending...</>
               ) : (
                 <>

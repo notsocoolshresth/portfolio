@@ -14,7 +14,7 @@ export function SkillBadge({ name, icon }: SkillBadgeProps) {
   const getIconPath = () => {
     if (icon) return icon;
     // Convert name to lowercase and remove any special characters for file name matching
-    const formattedName = name.toLowerCase().replace(/[^\w]/g, '');
+    const formattedName = name.toLowerCase();
     return `/tech-icons/${formattedName}.svg`;
   };
 

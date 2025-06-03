@@ -214,7 +214,6 @@ export default function Portfolio() {
                 <SkillBadge name="JavaScript" />
                 <SkillBadge name="C++" />
                 <SkillBadge name="C" />
-                <SkillBadge name="Java" />
                 <SkillBadge name="HTML/CSS" />
                 <SkillBadge name="Bash" />
               </div>
@@ -226,9 +225,9 @@ export default function Portfolio() {
                 <SkillBadge name="React.js" />
                 <SkillBadge name="Node.js" />
                 <SkillBadge name="Express" />
+                <SkillBadge name="Flask" />
                 <SkillBadge name="TensorFlow" />
                 <SkillBadge name="PyTorch" />
-                <SkillBadge name="Next.js" />
               </div>
             </div>
 
@@ -238,9 +237,8 @@ export default function Portfolio() {
                 <SkillBadge name="SQL" />
                 <SkillBadge name="Git" />
                 <SkillBadge name="MongoDB" />
-                <SkillBadge name="RESTful APIs" />
+                <SkillBadge name="Postman" />
                 <SkillBadge name="JWT" />
-                <SkillBadge name="Tailwind CSS" />
               </div>
             </div>
           </div>
