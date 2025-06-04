@@ -13,8 +13,30 @@ export function SkillBadge({ name, icon }: SkillBadgeProps) {
   // Use a mapping for tech icons or a default placeholder
   const getIconPath = () => {
     if (icon) return icon;
-    // Convert name to lowercase and remove any special characters for file name matching
-    const formattedName = name.toLowerCase();
+    
+    // Special mappings for specific technologies
+    const iconMappings: Record<string, string> = {
+      "React.js": "reactjs",
+      "Node.js": "nodejs",
+      "HTML/CSS": "htmlcss",
+      "TensorFlow": "tensorflow",
+      "PyTorch": "pytorch",
+      "Express": "express",
+      "Flask": "flask",
+      "Git": "git",
+      "MongoDB": "mongodb",
+      "Postman": "postman",
+      "JWT": "jwt",
+      "SQL": "sql",
+      "JavaScript": "javascript",
+      "Python": "python",
+      "C++": "c++",
+      "C": "c",
+      "Bash": "bash"
+    };
+    
+    // Use the mapping if available, otherwise convert the name to lowercase
+    const formattedName = iconMappings[name] || name.toLowerCase().replace(/[^\w]/g, '');
     return `/tech-icons/${formattedName}.svg`;
   };
 

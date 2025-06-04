@@ -204,12 +204,10 @@ export default function Portfolio() {
         </div>
 
         <div className="container relative z-10">
-          <SectionHeading title="Technical Skills" subtitle="Technologies I work with" />
-
-          <div className="mt-16 space-y-12">
-            <div>
+          <SectionHeading title="Technical Skills" subtitle="Technologies I work with" />          <div className="mt-16 space-y-12">
+            <div className="flex flex-col items-center">
               <h3 className="text-xl font-semibold mb-6 text-center">Programming Languages</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+              <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
                 <SkillBadge name="Python" />
                 <SkillBadge name="JavaScript" />
                 <SkillBadge name="C++" />
@@ -217,11 +215,9 @@ export default function Portfolio() {
                 <SkillBadge name="HTML/CSS" />
                 <SkillBadge name="Bash" />
               </div>
-            </div>
-
-            <div>
+            </div>            <div className="flex flex-col items-center">
               <h3 className="text-xl font-semibold mb-6 text-center">Frameworks & Libraries</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
                 <SkillBadge name="React.js" />
                 <SkillBadge name="Node.js" />
                 <SkillBadge name="Express" />
@@ -229,11 +225,9 @@ export default function Portfolio() {
                 <SkillBadge name="TensorFlow" />
                 <SkillBadge name="PyTorch" />
               </div>
-            </div>
-
-            <div>
+            </div>            <div className="flex flex-col items-center">
               <h3 className="text-xl font-semibold mb-6 text-center">Tools & Technologies</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
                 <SkillBadge name="SQL" />
                 <SkillBadge name="Git" />
                 <SkillBadge name="MongoDB" />
