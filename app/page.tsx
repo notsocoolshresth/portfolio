@@ -250,13 +250,13 @@ export default function Portfolio() {
           <SectionHeading title="Featured Projects" subtitle="Some of my recent work" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">            <ProjectCard
-              title="Site Builder"
-              description="A full-stack web application enabling non-technical users to design websites without coding. Features drag-and-drop functionality, real-time preview, and JWT authentication."
-              tags={["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "DND-kit"]}
-              image="/site_builder.png"
-              demoUrl="https://it-project-2025.vercel.app/"
-              repoUrl="https://github.com/notsocoolshresth"
-            />            <ProjectCard
+            title="Site Builder"
+            description="A full-stack web application enabling non-technical users to design websites without coding. Features drag-and-drop functionality, real-time preview, and JWT authentication."
+            tags={["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "DND-kit"]}
+            image="/site_builder.png"
+            demoUrl="https://it-project-2025.vercel.app/"
+            repoUrl="https://github.com/notsocoolshresth"
+          />            <ProjectCard
               title="CNN Chess Bot"
               description="An intelligent chess bot using CNN + MiniMax architecture. Features dual TensorFlow CNN models for move prediction and an interactive GUI with heatmap overlays."
               tags={["Python", "TensorFlow", "Neural Networks", "Pygame", "python-chess", "AI"]}
@@ -317,12 +317,6 @@ export default function Portfolio() {
               rank="AIR 97"
             />
             <AchievementCard
-              title="LeetCode Rating"
-              description="Maximum rating 1668 (top 3%)"
-              category="coding"
-              rank="Top 3%"
-            />
-            <AchievementCard
               title="CodeChef Contest"
               description="Ranked 317 (top 1.6%) in Starters 165 Div 2"
               category="competitive"
@@ -345,6 +339,19 @@ export default function Portfolio() {
               description="Ranked 1595 out of 26,545 (top 6%)"
               category="competitive"
               rank="Top 6%"
+            />
+                      <AchievementCard
+              title="LeetCode Biweekly 153"
+              description="Ranked 1250 out of 25606 (top 4%)"
+              category="competitive"
+              rank="Top 4%"
+            />
+            <AchievementCard
+              title="LeetCode Rating"
+              description="Maximum rating 1734"
+              category="coding"
+              rank="Rating 1734"
+
             />
           </div>
         </div>
